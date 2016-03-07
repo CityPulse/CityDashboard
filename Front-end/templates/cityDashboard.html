@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-sm-2">
+
+		<div style="margin : 25px" ng-controller = "getAvailableDataSourcesCtrl">
+			
+				
+			
+			<div>
+				<button ng-click = "getAvailableDataSources()">Get available data sources</button>	
+			</div>
+			<div>
+				<div ng-repeat="inf in info">
+					<p >{{inf.sensorCategory}}</p>
+					<ul class="list-unstyled" ng-repeat = "name in inf.fields_array">
+						<li><input type="checkbox" ng-model="checkboxModel.name" ng-change="getLastValueFunction(inf.sensorCategory, name)">{{name}}<ui-color-piker ng-show="checkboxModel.name" ng-model="targetColor"></ui-color-piker></li>
+						<p ng-disabled="checkboxModel.name"></p>
+					</ul>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="col-sm-6" ng-controller = "MapCtrl">
+		
+		<div id="map"></div>
+
+	</div>
+	<div class="col-sm-3">
+	
+		
+		<div ng-controller = "graphicCtrl">
+			<p>Please select start and end date!</p>
+			
+			<input type="text" ng-model="startDate">
+			<input type="text" ng-model="endDate">
+			<!--<button ng-click= "getHistoricData()">GET</button>-->
+			
+			<highchart id="chart1" config="chartOptions1" style="height: 300px; width: 600px; margin: 0 auto">Placeholder for generic chart</highchart>
+			<highchart id='chart2' config="chartOptions2" style="height: 300px; width: 600px; margin: 0 auto">Placeholder for generic chart</highchart>
+			<highchart id='chart3' config="chartOptions3" style="height: 300px; width: 600px; margin: 0 auto">Placeholder for generic chart</highchart>
+			<!--<highchart id="chart1" config="highchartsNG" style="width: 600px; height: 200px; margin: 0 auto"></highchart>
+			<highchart id="chart2" config="highchartsNG" style="width: 600px; height: 200px; margin: 0 auto"></highchart>
+			<highchart id="chart3" config="highchartsNG" style="width: 600px; height: 200px; margin: 0 auto"></highchart>-->
+		</div>
+
+		
+
+	</div>
+</div>
+
+
+

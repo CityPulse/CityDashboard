@@ -1,0 +1,117 @@
+{
+	"status" : "Ok",
+	"message" : "",
+	"data" : {
+		"field_array" : [{
+				"propertyURI" : "http://ict-citypulse.eu/city#MeasuredTime",
+				"name" : "TIMESTAMP",
+				"format" : "%Y-%m-%dT%H:%M:%S",
+				"dataType" : "datetime.datetime",
+				"max" : "2099-12-31T23:59:59",
+				"propertyName" : "MeasuredTime",
+				"min" : "2012-01-01T00:00:00",
+				"showOnCityDashboard" : false,
+				"unit" : "http://purl.oclc.org/NET/muo/ucum/unit/time/minute"
+			}, {
+				"propertyURI" : "http://ict-citypulse.eu/city#AverageSpeed",
+				"name" : "avgSpeed",
+				"min" : 0,
+				"dataType" : "float",
+				"max" : 250,
+				"propertyName" : "AverageSpeed",
+				"showOnCityDashboard" : true,
+				"unit" : "http://ict-citypulse.eu/unit:km-per-hour"
+			}, {
+				"propertyURI" : "http://ict-citypulse.eu/city#StreetVehicleCount",
+				"name" : "vehicleCount",
+				"min" : 0,
+				"dataType" : "int",
+				"max" : 1000,
+				"propertyName" : "StreetVehicleCount",
+				"showOnCityDashboard" : true,
+				"unit" : "http://ict-citypulse.eu/unit:number-of-vehicle-per-5min"
+			}, {
+				"propertyURI" : "http://ict-citypulse.eu/city#AvgMeasuredTime",
+				"name" : "avgMeasuredTime",
+				"min" : 0,
+				"dataType" : "int",
+				"max" : 1000,
+				"propertyName" : "MeasuredTime",
+				"showOnCityDashboard" : false,
+				"unit" : "http://purl.oclc.org/NET/muo/ucum/unit/time/minute"
+			}
+		],
+		"information" : "Road traffic for the City of Aarhus",
+		"sensorName" : "aarhus_road_traffic_210040",
+		"maxLatency" : 2,
+		"author" : "cityofaarhus",
+		"namespace" : "http://ict-citypulse.eu/",
+		"fullSensorID" : "http://ict-citypulse.eu/sensor/210040",
+		"source" : "http://www.odaa.dk/api/action/datastore_search?resource_id=b3eeb0ff-c8a8-4824-99d6-e0a3747c8b0d",
+		"location" : "LINESTRING(10.182444749668093 56.19922307868954, 10.216211542327983 56.19677547153966)",
+		"movementBuffer" : 3,
+		"postalCode" : ["8200", "8240"],
+		"sensorID" : 210040,
+		"field" : {
+			"avgMeasuredTime" : {
+				"propertyURI" : "http://ict-citypulse.eu/city#AvgMeasuredTime",
+				"name" : "avgMeasuredTime",
+				"min" : 0,
+				"dataType" : "int",
+				"max" : 1000,
+				"propertyName" : "MeasuredTime",
+				"showOnCityDashboard" : false,
+				"unit" : "http://purl.oclc.org/NET/muo/ucum/unit/time/minute"
+			},
+			"avgSpeed" : {
+				"propertyURI" : "http://ict-citypulse.eu/city#AverageSpeed",
+				"name" : "avgSpeed",
+				"min" : 0,
+				"dataType" : "float",
+				"max" : 250,
+				"propertyName" : "AverageSpeed",
+				"showOnCityDashboard" : true,
+				"unit" : "http://ict-citypulse.eu/unit:km-per-hour"
+			},
+			"vehicleCount" : {
+				"propertyURI" : "http://ict-citypulse.eu/city#StreetVehicleCount",
+				"name" : "vehicleCount",
+				"min" : 0,
+				"dataType" : "int",
+				"max" : 1000,
+				"propertyName" : "StreetVehicleCount",
+				"showOnCityDashboard" : true,
+				"unit" : "http://ict-citypulse.eu/unit:number-of-vehicle-per-5min"
+			},
+			"TIMESTAMP" : {
+				"propertyURI" : "http://ict-citypulse.eu/city#MeasuredTime",
+				"name" : "TIMESTAMP",
+				"format" : "%Y-%m-%dT%H:%M:%S",
+				"dataType" : "datetime.datetime",
+				"max" : "2099-12-31T23:59:59",
+				"propertyName" : "MeasuredTime",
+				"min" : "2012-01-01T00:00:00",
+				"showOnCityDashboard" : false,
+				"unit" : "http://purl.oclc.org/NET/muo/ucum/unit/time/minute"
+			}
+		},
+		"sourceType" : "pull_http",
+		"messagebus" : {
+			"routingKey" : "Aarhus.Road.Traffic.210040"
+		},
+		"timestamp" : {
+			"inField" : "TIMESTAMP",
+			"format" : "%Y-%m-%dT%H:%M:%S"
+		},
+		"countryName" : ["Denmark", "Denmark"],
+		"updateInterval" : 300,
+		"graphName" : "aarhus_road_traffic#",
+		"streetName" : ["Randersvej", "Vejlby Centervej"],
+		"uuid" : "c3b93aba-629f-5ae0-b0b6-8a19da385759",
+		"fields" : ["TIMESTAMP", "avgSpeed", "vehicleCount", "avgMeasuredTime"],
+		"sourceFormat" : "application/json",
+		"cityName" : ["Aarhus", "Aarhus"],
+		"sensorType" : "Aarhus_Road_Traffic",
+		"location_epsg" : null
+	}
+}

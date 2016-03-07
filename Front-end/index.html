@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="cityDashboard">
+
+	<head>
+		<title>CityDashboard</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/spectrum.css"/>
+
+		<script src="scripts/jquery.min.js"></script>
+		<script type='text/javascript' src='scripts/spectrum.js'></script>
+		
+		<script src="scripts/angular.min.js"></script>
+		<script src="scripts/angular-route.min.js"></script>
+		
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">		
+		<script src="scripts/bootstrap.min.js"></script>
+		
+		
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="css/leaflet.css" />
+		<script src="scripts/leaflet.js"></script>
+		<script src="scripts/angular-leaflet-directive.min.js"></script>
+		
+		<!-- HIGHCHARTS -->
+		<script src="scripts/highcharts.js"></script>
+		<script src="scripts/exporting-highcharts.js"></script>
+		<script src="scripts/highcharts-ng.js"></script>
+
+		<script src="scripts/index.js"></script>
+		<script src="scripts/map_cityDashboard.js"></script>
+		<script src="scripts/get_available_data_sources.js"></script>
+		<script src="scripts/graphics.js"></script>
+		<script src="scripts/data-picker.js"></script>
+		
+
+
+	</head>
+
+	<body>
+		<img src="img/Logo.PNG" width="150" height="auto"></img>
+
+		<ul class="nav nav-tabs" ng-controller="TabsCtrl" >
+			<li ng-class="tabClass(tab)" ng-repeat="tab in tabs" tab="tab"><a href="{{tab.link}}" ng-click="setSelectedTab(tab)">{{tab.label}}</a></li>
+		</ul>
+		<div ng-view></div>
+	</body>
+
+</html>
+

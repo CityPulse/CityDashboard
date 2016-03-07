@@ -1,0 +1,19 @@
+#map { height: 800px; }
+
+.preview {
+	
+	height: 150px;
+	width: 150px;
+	border: 1px black solid;
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
