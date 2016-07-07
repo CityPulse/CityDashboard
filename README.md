@@ -11,7 +11,7 @@ In order to display the status of the city, the dashboard application connects d
 
 Figure 2 depicts the workflow executed by the CityPulse components when the user wants to visualize the real-time or historic data.
  
-
+![alt text](https://github.com/CityPulse/CityDashboard/blob/master/Dashboard_work_flow.png "CityPulse dashboard workflow")
  
 The CityPulse dashboard workflow steps are briefly described below:
 *	First, the user has to select an area of interest on the map;
