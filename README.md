@@ -35,6 +35,11 @@ The CityPulse dashboard relies on the following framework components:
 
 In order to be able to run the application the user will need to have installed an application server like Tomcat or JBoss. The user has only to copy the war file of the backend application and the content of the frontend one in the deployment folder of the server. The backend and the front end application can be found here: https://github.com/CityPulse/CityDashboard .
 
+## Contributers
+
+The GDI component was developed as part of the EU project CityPulse. The consortium member Siemens provided the main contributions for this component.
+
+
 ## Authors
 
 * **Cosmin Marin** - (https://github.com/cosminmarin)
