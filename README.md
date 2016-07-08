@@ -37,8 +37,11 @@ In order to be able to run the application the user will need to have installed 
 
 ## Contributers
 
-The City Dashboard was developed as part of the EU project CityPulse. The consortium member Siemens provided the main contributions for this component.
+The City Dashboard was developed as part of the EU project CityPulse. The consortium member SIEMENS Corporate Technology Romania provided the main contributions for this component.
 
+CityPulse: http://www.ict-citypulse.eu/
+
+SIEMENS Corporate Technology Romania: http://www.siemens.ro
 
 ## Authors
 
