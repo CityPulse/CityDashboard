@@ -15,7 +15,7 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
-		
+
 		<!-- gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -34,12 +34,19 @@
 			<artifactId>json</artifactId>
 			<version>20150729</version>
 		</dependency>
-		
+
 		<!-- Jena -->
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-tdb</artifactId>
 			<version>3.0.0</version>
+		</dependency>
+		
+		<!-- amqp-client -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>3.3.5</version>
 		</dependency>
 
 
