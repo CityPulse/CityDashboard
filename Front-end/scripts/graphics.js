@@ -1,16 +1,33 @@
-cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoricDataServiceForChartA,getHistoricDataServiceForChartB,getHistoricDataServiceForChartC,sensorTypeService){
+cityApp.controller('graphicCtrl', function($scope,$http, $rootScope,colorService,getHistoricDataServiceForChartA,getHistoricDataServiceForChartB,getHistoricDataServiceForChartC,sensorTypeService){
 	
 	$scope.test = [10,10,100];
-	
+    
+    /*current date */
+    var today = new Date();
+    
 	$scope.color ={};
 	
-	$scope.startDate = '19/02/2016T12:00:00';
-	$scope.endDate = '19/02/2016T20:00:00';
+	$scope.startDate = {
+        value: new Date(today.getFullYear(), today.getMonth(), today.getDate()-1, today.getHours(), today.getMinutes())
+      };
+	$scope.endDate = {
+        value: new Date(today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes())
+      };
 	
 	
 	//for chart A
 	$scope.getHistoricDataA = function(){
-		
+        
+        var dateStartVar = new Date($('#date-input-start').val()); 
+        var dateEndVar = new Date($('#date-input-end').val());
+        
+		var fullDateStart = dateStartVar.getFullYear()+"/"+zeroPadded(dateStartVar.getMonth() + 1)+"/"+zeroPadded(dateStartVar.getDate())+"T"+zeroPadded(dateStartVar.getHours()-3)+":"+zeroPadded(dateStartVar.getMinutes())+":"+zeroPadded(dateStartVar.getSeconds());
+        
+        var fullDateEnd = dateEndVar.getFullYear()+"/"+zeroPadded(dateEndVar.getMonth() + 1)+"/"+zeroPadded(dateEndVar.getDate())+"T"+zeroPadded(dateEndVar.getHours()-3)+":"+zeroPadded(dateEndVar.getMinutes())+":"+zeroPadded(dateEndVar.getSeconds());
+        
+            
+        /*alert(fullDateStart+"   |   "+fullDateEnd);*/
+    
 		
 		var responseFromHistoricData = getHistoricDataServiceForChartA.return();
 		//alert("responseFromHistoricData "+responseFromHistoricData);
@@ -22,13 +39,13 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 		$scope.color = parsedColor;
 		
 		var historicData = {
-		
+		            
 			method: 'POST',
-			url: 'http://localhost:8080/JDBCService/thirdStep',
+			url: 'http://131.227.92.55:8008/JDBCService/thirdStep',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+$scope.startDate+'&dateEnd='+$scope.endDate
+			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+fullDateStart+'&dateEnd='+fullDateEnd
 		}
 		
 		var response = $http(historicData);
@@ -39,17 +56,31 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 			$scope.updateChart1();
 		});
 		response.error(function(data){
-			alert("error");
+			alert("Error: Problems updating the chart with the received data");
 		});
 	
 		
 	}
 	
+    function zeroPadded(val) {
+        if (val >= 10)
+            return val;
+        else
+            return '0' + val;
+    }
 	
 	
 	//for chart B
 	
 	$scope.getHistoricDataB = function(){
+        
+        var dateStartVar = new Date($('#date-input-start').val()); 
+        var dateEndVar = new Date($('#date-input-end').val());
+        
+		var fullDateStart = dateStartVar.getFullYear()+"/"+zeroPadded(dateStartVar.getMonth() + 1)+"/"+zeroPadded(dateStartVar.getDate())+"T"+zeroPadded(dateStartVar.getHours()-3)+":"+zeroPadded(dateStartVar.getMinutes())+":"+zeroPadded(dateStartVar.getSeconds());
+        
+        var fullDateEnd = dateEndVar.getFullYear()+"/"+zeroPadded(dateEndVar.getMonth() + 1)+"/"+zeroPadded(dateEndVar.getDate())+"T"+zeroPadded(dateEndVar.getHours()-3)+":"+zeroPadded(dateEndVar.getMinutes())+":"+zeroPadded(dateEndVar.getSeconds());
+        
 		
 		var responseFromHistoricData = getHistoricDataServiceForChartB.return();
 		//alert("responseFromHistoricData "+responseFromHistoricData);
@@ -65,11 +96,11 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 		var historicData = {
 		
 			method: 'POST',
-			url: 'http://localhost:8080/JDBCService/thirdStep',
+			url: 'http://131.227.92.55:8008/JDBCService/thirdStep',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+$scope.startDate+'&dateEnd='+$scope.endDate
+			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+fullDateStart+'&dateEnd='+fullDateEnd
 		}
 
 		var response = $http(historicData);
@@ -80,7 +111,7 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 			$scope.updateChart2();
 		});
 		response.error(function(data){
-			alert("error");
+			alert("Error: Problems updating the chart with the received data");
 		});
 	
 		
@@ -90,6 +121,14 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 	//for chart C
 	
 	$scope.getHistoricDataC = function(){
+        
+        var dateStartVar = new Date($('#date-input-start').val()); 
+        var dateEndVar = new Date($('#date-input-end').val());
+        
+		var fullDateStart = dateStartVar.getFullYear()+"/"+zeroPadded(dateStartVar.getMonth() + 1)+"/"+zeroPadded(dateStartVar.getDate())+"T"+zeroPadded(dateStartVar.getHours()-3)+":"+zeroPadded(dateStartVar.getMinutes())+":"+zeroPadded(dateStartVar.getSeconds());
+        
+        var fullDateEnd = dateEndVar.getFullYear()+"/"+zeroPadded(dateEndVar.getMonth() + 1)+"/"+zeroPadded(dateEndVar.getDate())+"T"+zeroPadded(dateEndVar.getHours()-3)+":"+zeroPadded(dateEndVar.getMinutes())+":"+zeroPadded(dateEndVar.getSeconds());
+        
 		
 		var responseFromHistoricData = getHistoricDataServiceForChartC.return();
 		//alert("responseFromHistoricData "+responseFromHistoricData);
@@ -105,11 +144,11 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 		var historicData = {
 		
 			method: 'POST',
-			url: 'http://localhost:8080/JDBCService/thirdStep',
+			url: 'http://131.227.92.55:8008/JDBCService/thirdStep', //http://131.227.92.55:8008
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+$scope.startDate+'&dateEnd='+$scope.endDate
+			data: 'uuid='+uuidForRequest+'&field='+fieldFromRequest+'&dateStart='+fullDateStart+'&dateEnd='+fullDateEnd
 		}
 
 		var response = $http(historicData);
@@ -120,7 +159,7 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 			$scope.updateChart3();
 		});
 		response.error(function(data){
-			alert("error");
+			alert("Error: Problems updating the chart with the received data");
 		});
 	
 		
@@ -156,10 +195,18 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
                         text: 'Chart A'
                     },
                     xAxis: {
-                        categories: ['00:00:00','00:00:00']
+                        categories: ['00:00:00','00:00:00'],
+                        
+                        labels:{
+                            enabled:true//default is true
+                        }
                     },
                     series: [{
-                        data: [0,0]
+                        data: [0,0],
+                        marker: {
+                            symbol: 'square'
+                        }
+                        
                     }]
                 }	
 	
@@ -180,11 +227,81 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 
 			series: [{
 				color: $scope.color.toString(), 
-				data: $scope.historicData.values.map(Number)
+				data: $scope.historicData.values.map(Number),
+                marker: {
+                     symbol: 'square'
+                }
 			}]
 			
 		};
 		
+		
+	};
+    
+    $scope.resetCharts = function(){
+        
+		$scope.chartOptions1 = {
+			chart: {
+						renderTo: 'chart1'
+					},
+			title: {
+				text: 'Chart A'
+			},
+			xAxis: {
+				categories: ['00:00:00','00:00:00']
+			},
+
+			series: [{ 
+                color: '#7cb5ec',
+				data: [0,0],
+                marker: {
+                     symbol: 'square'
+                }
+			}]
+			
+		};
+        
+        $scope.chartOptions2 = {
+			chart: {
+						renderTo: 'chart2'
+					},
+			title: {
+				text: 'Chart B'
+			},
+			xAxis: {
+				categories: ['00:00:00','00:00:00']
+			},
+
+			series: [{ 
+                color: '#7cb5ec',
+				data: [0,0],
+                marker: {
+                     symbol: 'square'
+                }
+			}]
+			
+		};
+        
+        $scope.chartOptions3 = {
+			chart: {
+						renderTo: 'chart3'
+					},
+			title: {
+				text: 'Chart C'
+			},
+			xAxis: {
+				categories: ['00:00:00','00:00:00']
+			},
+
+			series: [{ 
+                color: '#7cb5ec',
+				data: [0,0],
+                marker: {
+                     symbol: 'square'
+                }
+			}]
+			
+		};
 		
 	};
 	
@@ -196,10 +313,16 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
                         text: 'Chart B'
                     },
                     xAxis: {
-                        categories: ['00:00:00','00:00:00']
+                        categories: ['00:00:00','00:00:00'],
+                        labels:{
+                            enabled:true//default is true
+                        }
                     },
                     series: [{
-                        data: [0,0]
+                        data: [0,0],
+                        marker: {
+                            symbol: 'square'
+                        }
                     }]
                 }
 	
@@ -220,7 +343,10 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 
 			series: [{
 				color: $scope.color.toString(), 
-				data: $scope.historicData.values.map(Number)
+				data: $scope.historicData.values.map(Number),
+                marker: {
+                     symbol: 'square'
+                }
 			}]
 			
 		};
@@ -236,10 +362,16 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
                         text: 'Chart C'
                     },
                     xAxis: {
-                        categories: ['00:00:00','00:00:00']
+                        categories: ['00:00:00','00:00:00'],
+                        labels:{
+                            enabled:true//default is true
+                        }
                     },
                     series: [{
-                        data: [0,0]
+                        data: [0,0],
+                        marker: {
+                            symbol: 'square'
+                        }
                     }]
                 }
 	$scope.updateChart3 = function(){
@@ -259,13 +391,20 @@ cityApp.controller('graphicCtrl', function($scope,$http,colorService,getHistoric
 
 			series: [{
 				color: $scope.color.toString(), 
-				data: $scope.historicData.values.map(Number)
+				data: $scope.historicData.values.map(Number),
+                marker: {
+                     symbol: 'square'
+                }
 			}]
 			
 		};
 		
 		
 	};
+    
+    $scope.$on('resetCharts', function(){					
+		$scope.resetCharts();
+	});
 	
 	
 });

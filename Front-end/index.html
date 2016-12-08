@@ -3,7 +3,6 @@
 
 	<head>
 		<title>CityDashboard</title>
-		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/spectrum.css"/>
 
 		<script src="scripts/jquery.min.js"></script>
@@ -32,17 +31,19 @@
 		<script src="scripts/get_available_data_sources.js"></script>
 		<script src="scripts/graphics.js"></script>
 		<script src="scripts/data-picker.js"></script>
+        
+        <link rel="stylesheet" href="css/style.css" />
 		
 
 
 	</head>
 
 	<body>
-		<img src="img/Logo.PNG" width="150" height="auto"></img>
+		<!--<img src="img/Logo.PNG" width="150" height="auto"></img>
 
 		<ul class="nav nav-tabs" ng-controller="TabsCtrl" >
 			<li ng-class="tabClass(tab)" ng-repeat="tab in tabs" tab="tab"><a href="{{tab.link}}" ng-click="setSelectedTab(tab)">{{tab.label}}</a></li>
-		</ul>
+		</ul>-->
 		<div ng-view></div>
 	</body>
 

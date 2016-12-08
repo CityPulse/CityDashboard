@@ -28,19 +28,19 @@ cityApp.factory('lastValueService',function($rootScope,colorService){
 	var lat ={};
 	var lng ={};
 	var uuids ={};
+    var observationTime ={};
 	var color = {};
 
 	
 	lastValue.add = function(data){		
 		
 		color = colorService.return();
-		data.forEach(function(item){			
-			
-			lastValue.push(item.value,item.lat,item.lng,item.uuid,color);			
+		data.forEach(function(item){		
+			lastValue.push(item.value,item.lat,item.lng,item.uuid,item.observationTime,color);			
 		});
 		
 		$rootScope.$broadcast('mapEvent',{
-		});		
+		});	
 	}	
 	return lastValue;
 });
@@ -50,11 +50,11 @@ cityApp.factory('sensorTypeService',function(){
 	var getLastValue = {};
 	
 	
-		getLastValue.add = function(type, name){	
-			
+    getLastValue.add = function(type, name){	
 			getLastValue.name = name;
 			getLastValue.type = type;
-		}
+    }
+    
 	getLastValue.return = function(){
 		
 		return getLastValue;		
@@ -62,14 +62,36 @@ cityApp.factory('sensorTypeService',function(){
 	return getLastValue;
 });
 
+cityApp.factory('mapCenter',function($rootScope){
+	
+	var currentCity = {};
+	
+	
+    currentCity.add = function(city){	
+			currentCity = city;
+    }
+    
+    currentCity.changeCurrentCity = function (currentCity) {
+        $rootScope.$broadcast('changeCityEvent');	
+    }
+    
+	currentCity.return = function(){
+		
+		return currentCity;		
+	}	
+	return currentCity;
+});
+
 cityApp.factory('colorService',function(){
 	
 	var sensorColor = {};
+    
 	
 	sensorColor.add = function(color){
 		sensorColor = color;
 	}
 	sensorColor.return=function(){
+        
 		return sensorColor;
 	}
 	return sensorColor;
@@ -140,18 +162,12 @@ cityApp.factory('getHistoricDataServiceForChartC',function($rootScope){
 cityApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.
       when('/cityDashboard', {templateUrl: 'templates/cityDashboard.html',   controller: CityDashboardCtrl }).  
-      when('/dataQualityMonitoring', {templateUrl: 'templates/dataQualityMonitoring.html',   controller: DataQualityMonitoringCtrl }).
-  	  when('/city3DMap', {templateUrl: 'templates/city3DMap.html',   controller: City3DMapCtrl }).
-  	  when('/settings', {templateUrl: 'templates/settings.html',   controller: SettingsCtrl }).
       otherwise({redirectTo: '/cityDashboard'});    
 }]);
 
 cityApp.controller('TabsCtrl',function($scope, $location) {
   $scope.tabs = [
       { link : '#/cityDashboard', label : 'City Dashboard' },      
-      { link : '#/dataQualityMonitoring', label : 'Data Quality Monitoring' },
-	  { link : '#/city3DMap', label :  'City 3D Map'},
-	  { link : '#/settings', label : 'Settings' }
     ]; 
     
   $scope.selectedTab = $scope.tabs[0];    
@@ -174,14 +190,3 @@ function CityDashboardCtrl($scope) {
   
 }
 
-function DataQualityMonitoringCtrl($scope) {
-  
-}
-
-function City3DMapCtrl($scope) {
-  
-}
-
-function SettingsCtrl($scope) {
-  
-}

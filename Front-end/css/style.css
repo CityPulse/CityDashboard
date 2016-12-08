@@ -17,3 +17,11 @@
     border-radius: 32px;
     color: black;
   }
+
+.col-sm-3 {
+    width: 32%;
+}
+
+.ng-scope {
+    /*width:100%;*/
+}
